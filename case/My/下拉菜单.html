@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>下拉菜单</title>
+	<style>
+        * {
+            margin: 0;
+            padding: 0
+        }
+
+        body {
+            font-size: 12px;
+        }
+
+        ul, li {
+            list-style: none;
+        }
+
+        a:link, a:visited {
+            text-decoration: none;
+        }
+
+        .list {
+            width: 210px;
+            border-bottom: solid 1px #316a91;
+            margin: 40px 0 0 20px;
+        }
+
+        .list ul li {
+            background-color: #467ca2;
+            border: solid 1px #316a91;
+            border-bottom: 0;
+        }
+
+        .list ul li a {
+            padding-left: 10px;
+            color: #fff;
+            font-size: 12px;
+            display: block;
+            font-weight: bold;
+            height: 36px;
+            line-height: 36px;
+            position: relative;
+        }
+
+        .list ul li .inactive {
+            background: url("http://www.jq22.com/img/cs/500x500-1.png") no-repeat 184px center;
+        }
+
+        .list ul li .inactives {
+            background: url("http://www.jq22.com/img/cs/500x500-2.png") no-repeat 184px center;
+        }
+
+        .list ul li ul {
+            display: none;
+        }
+
+        .list ul li ul li {
+            border-left: 0;
+            border-right: 0;
+            background-color: #6196bb;
+            border-color: #467ca2;
+        }
+
+        .list ul li ul li ul {
+            display: none;
+        }
+
+        .list ul li ul li a {
+            padding-left: 20px;
+        }
+
+        .list ul li ul li ul li {
+            background-color: #d6e6f1;
+            border-color: #6196bb;
+        }
+
+        .last {
+            background-color: #d6e6f1;
+            border-color: #6196bb;
+        }
+
+        .list ul li ul li ul li a {
+            color: #316a91;
+            padding-left: 30px;
+        }
+    </style>
+</head>
+<body>
+	<div class="list">
+		<ul>
+			<!-- 导航的总标题 -->
+			<li><a href="###">Title</a></li>
+
+			<!-- 标题一 -->
+			<li>
+				<a href="###" class="inactive">title1</a>
+				<ul style="display: none;">
+					<li>
+						<a href="###" class="inactive active">title1-con</a>			
+						<!-- 标题一下的内容 -->
+						<ul>
+							<li><a href="###">title1-con1</a></li>
+							<li><a href="###">title1-con2</a></li>
+							<li><a href="###">title1-con3</a></li>
+							<li><a href="###">title1-con4</a></li>
+							<li><a href="###">title1-con5</a></li>
+							<li><a href="###">title1-con6</a></li>
+						</ul>
+					</li>
+					<li class="last"><a href="###">title-last</a></li>					
+				</ul>
+
+			</li>
+
+			<!-- 标题二 -->
+			<li>
+				<a href="###" class="inactive">title2</a>
+				<ul style="display: none;">
+					<li>
+						<a href="###" class="inactive active">title2-con-1</a>
+						<ul>
+							<li><a href="###">1</a></li>
+							<li><a href="###">2</a></li>
+							<li><a href="###">3</a></li>
+							<li><a href="###">4</a></li>
+							<li><a href="###">5</a></li>
+						</ul>
+					</li>
+					<li>
+						<a href="###" class="inactive active">title2-con-2</a>
+						<ul>
+							<li><a href="###">a1</a></li>
+							<li><a href="###">a2</a></li>
+							<li><a href="###">a3</a></li>
+							<li><a href="###">a4</a></li>
+							<li><a href="###">a5</a></li>
+						</ul>
+					</li>
+					<li class="last"><a href="###">title2-last</a></li>					
+				</ul>
+			</li>
+		</ul>
+	</div>
+</body>
+<script src="http://libs.baidu.com/jquery/1.11.3/jquery.min.js"></script>
+<script>
+	$('.inactive').click(function() {
+        if ($(this).siblings('ul').css('display') == 'none') {
+            $(this).parent('li').siblings('li').removeClass('inactives');
+            $(this).addClass('inactives');
+            $(this).siblings('ul').slideDown(200).children('li');
+            if ($(this).parents('li').siblings('li').children('ul').css('display') == 'block') {
+                $(this).parents('li').siblings('li').children('ul').parent('li').children('a').removeClass('inactives');
+                $(this).parents('li').siblings('li').children('ul').slideUp(200);
+            }
+        } else {
+            //控制自身变成+号
+            $(this).removeClass('inactives');
+            //控制自身菜单下子菜单隐藏
+            $(this).siblings('ul').slideUp(200);
+            //控制自身子菜单变成+号
+            $(this).siblings('ul').children('li').children('ul').parent('li').children('a').addClass('inactives');
+            //控制自身菜单下子菜单隐藏
+            $(this).siblings('ul').children('li').children('ul').slideUp(200);
+             //控制同级菜单只保持一个是展开的（-号显示）
+            $(this).siblings('ul').children('li').children('a').removeClass('inactives');
+        }
+    });
+</script>
+</html>
+
+
+
+
+
+
+
+
+
+

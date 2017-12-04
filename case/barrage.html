@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>barrage</title>
+	<style>
+		*{margin:0;padding: 0}
+		#all{
+			width: 600px;
+			height: 400px;
+			background: black;
+			position: relative;
+		}
+	</style>
+</head>
+<body>
+	<div id="all"></div>
+	<input type="text" value="这是一个弹幕....">
+	<button>发送</button>
+</body>
+<script>
+	var all = document.getElementById('all');
+	var button = document.querySelector("button");
+	var text = document.querySelector("input");
+	button.onclick = function(){
+		var p = document.createElement("p");
+		p.style.position = 'absolute';
+		p.innerHTML = text.value;
+		p.style.width = 600+'px';
+		p.style.left = 600+'px';
+		p.style.color = 'white';
+		p.style.top = Math.random()*400+'px';
+		all.appendChild(p);
+
+		var timer = setInterval(function(){
+			p.style.left = parseInt(p.style.left)-1+'px';
+			if(parseInt(p.style.left)+600 <= 0){
+				all.removeChild(p);
+				clearIntrval(timer);
+			}
+		},10);
+	}
+</script>
+</html>
+
+
+

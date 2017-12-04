@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <link href="css/mui.min.css" rel="stylesheet" />
+    <script src="js/mui.min.js"></script>
+    <style>
+        body{
+            background-color: white;
+        }
+        .box{
+            width: 95%;
+            height: 300px;
+            /*background-color: aqua;*/
+            margin: 0 10px;
+            margin-top: 50px;
+            clear: both;
+            /*border:1px solid red;*/
+            text-align:center;
+            
+        }
+        #btn{
+            width: 200px;
+            height: 40px;
+            background-color:antiquewhite;
+            /*float:left;*/
+        }
+        #btn1{
+            width: 70px;
+            height: 40px;
+            background-color:antiquewhite;
+            /*float:right;*/
+        
+        }
+        .name{
+            width: 100px;
+            height: 30px;
+            float: left;
+            background-color: antiquewhite;
+            margin-left: 10px;
+            margin-top: 10px;
+            text-align: center;
+            line-height: 30px;
+        }
+        #span{
+            float:right;
+            position: relative;
+            margin-top:5px;
+            padding-right:10px;
+            /*border:1px solid red;*/
+        }
+        /*h1{
+            text-align: center;
+        }*/
+        .but{
+            width: 95%;
+            height: 50px;
+            /*border:1px solid red;*/
+            text-align:center;
+        }
+       
+    </style>
+</head>
+<body>
+    <header class="mui-bar mui-bar-nav">
+        <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+        <h1 class="mui-title">开始游戏吧！</h1>
+    </header>
+    
+    <br />
+    <br /><br />
+    <span id="span"></span>
+    <div class="box" id="box"></div>
+  
+    <div class="but">
+        <input  type="button" id="btn" value="不知道要选谁，就快点我吧！"/>
+        <a href="index.html"><input  type="button" id="btn1" value="返回" /></a>
+    </div>
+    
+    <script>
+        // mui.init();
+        
+        // mui.plusReady(function(){
+        //     mui("#box").on("tap",".name",function(){
+        //     //  console.log(this.name);
+            
+        //         mui.openWindow(this.name);
+        //     });
+        // },false);
+        
+        var box=document.getElementById("box");
+        var btn=document.getElementById("btn");
+        var span=document.getElementById("span");
+
+        var arr = ["游洲","张然","李梦月","王津柳","王玉","全莹",
+                    "王彦昆","孙晓忱","苗婕","宇文彬杰","郜超","赵帅","许飞","赵双","艾林","张乐","杨婷","赵子筠",
+                     "武超敏","肇鹏","田志东","尹子涛","王浩亮","邹鑫鑫","孙帅","郭晓霞",
+                    "李晓凤","崔颖星","宋传永","张云","王子豪","小黑","吴海洋"];
+         
+//      动态创建层
+        for(var i =0;i<arr.length;i++){
+            var div = document.createElement("button");
+            div.innerText=arr[i];
+            div.className="name";
+            div.name= i + ".html";
+            box.appendChild(div);
+        };
+//        
+        
+        
+        btn.onclick=function(){
+            var peoples= arr.length;
+//            监视按钮的状态
+            if(this.value==="不知道要选谁，就快点我吧！"){
+//                定时针
+                  timeId=setInterval(function () {
+//                      清空所有层的颜色
+                    for(var i =0;i<arr.length;i++){
+                        box.children[i].style.background=""
+                    };
+//                      留下当前层的颜色
+                    var random = parseInt(Math.random()*peoples);
+                    box.children[random].style.background="yellow";
+                },100);
+                this.value="停止";
+            }else{
+//                清除计时器
+                clearInterval(timeId);
+                this.value="不知道要选谁，就快点我吧！";
+            };
+        };
+
+//      获取时间的函数
+        getTime();
+        setInterval(getTime,1000)
+        function getTime(){
+            var day = new Date();
+            var year = day.getFullYear();//年
+            var month = day.getMonth()+1;//月
+            var dat = day.getDate();//日
+            var hour = day.getHours();//小时
+            var minitue = day.getMinutes();//分钟
+            var second = day.getSeconds();//秒
+            month=month<10?"0"+month:month;
+            dat=dat<10?"0"+dat:dat;
+            hour=hour<10?"0"+hour:hour;
+            minitue=minitue<10?"0"+minitue:minitue;
+            second=second<10?"0"+second:second;
+            span.innerText=year+"-"+month+"-"+dat+" "+hour+":"+minitue+":"+second;
+        }
+
+    </script>
+</body>
+</html>

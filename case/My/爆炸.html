@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style>
+		* {
+			margin:0;
+			padding:0;
+			list-style:none;
+		}
+		#box {
+            /*border: 1px solid red;*/
+			width:700px;
+			height:400px;
+			margin:50px auto;
+			transform-style:preserve-3d;
+			position:relative;
+			background:url(http://www.jq22.com/img/cs/500x300-2.png) no-repeat;
+			perspective:800px;
+		}
+		#box span {
+            /*border: 1px solid blue;*/
+			position:absolute;
+			background:url(http://www.jq22.com/img/cs/500x300-1.png) no-repeat;
+		}
+	</style>
+</head>
+<body>
+	<div id="box">
+
+	</div>
+</body>
+<script>
+	function rnd(n, m) {
+	    return parseInt(Math.random() * (m - n) + n);
+	}
+    
+    var oBox = document.getElementById('box');
+
+    var R = 4;
+    var C = 7;
+    for (var r = 0; r < R; r++) {
+        for (var c = 0; c < C; c++) {
+            var oSpan = document.createElement('span');
+            oSpan.style.width = oBox.offsetWidth / C + 'px';
+            oSpan.style.height = oBox.offsetHeight / R + 'px';
+            oBox.appendChild(oSpan);
+            oSpan.style.left = c * oSpan.offsetWidth + 'px';
+            oSpan.style.top = r * oSpan.offsetHeight + 'px';
+            oSpan.style.backgroundPosition = '-' + c * oSpan.offsetWidth + 'px -' + r * oSpan.offsetHeight + 'px';
+        }
+    }
+
+    var iNow = 0;
+
+    oBox.onclick = function() {
+        var aSpan = oBox.children;
+
+        iNow++;
+
+        for (var i = 0; i < aSpan.length; i++) {
+            aSpan[i].style.transition = '1s all ease';
+
+            var x = (aSpan[i].offsetLeft + aSpan[i].offsetWidth / 2) - oBox.offsetWidth / 2;
+            var y = (aSpan[i].offsetTop + aSpan[i].offsetHeight / 2) - oBox.offsetHeight / 2;
+
+            //aSpan[i].style.transform='translateX('+x+'px) translateY('+y+'px) translateZ(100px)';
+            aSpan[i].style.transform = 'translate3d(' + x + 'px,' + y + 'px,100px) rotateX(' + rnd(0, 180) + 'deg) rotateY(' + rnd(0, 180) + 'deg)';
+            aSpan[i].style.opacity = 0;
+
+            ;
+            (function(oSpan) {
+                aSpan[i].addEventListener('transitionend', function() {
+                    oSpan.style.transition = 'none';
+
+                    oSpan.style.transform = 'translate3d(0,0,0) rotateX(0deg) rotateY(0deg)';
+
+                    oSpan.style.opacity = 1;
+                    oSpan.style.backgroundImage = 'url(http://www.jq22.com/img/cs/500x300-' + ((iNow % 3) + 1) + '.png)';
+                    oBox.style.backgroundImage = 'url(http://www.jq22.com/img/cs/500x300-' + ((iNow + 1) % 3 + 1) + '.png)';
+                }, false);
+            })(aSpan[i]);
+        }
+    };
+</script>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<canvas id="my_html" width="300" height="300"></canvas>
+<canvas id="css" width="300" height="300"></canvas>
+<script src="js/progress.js"></script>
+<script>
+    var p1 = new Progress({
+        el:'my_html',//canvas元素id
+        deg:30,//绘制角度
+        timer:10,//绘制时间
+        lineWidth:20,//线宽
+        lineBgColor:'#e2e2e2',//底圆颜色
+        lineColor:'#e4393c',//动态圆颜色
+        textColor:'#000',//文本颜色
+        fontSize:50,//字体大小
+        circleRadius:100//圆半径
+    });
+    
+    var p2 = new Progress({
+        el:'css',//canvas元素id
+        deg:75,//绘制角度
+        timer:100,//绘制时间
+        lineWidth:20,//线宽
+        lineBgColor:'#e2e2e2',//底圆颜色
+        lineColor:'#e4393c',//动态圆颜色
+        textColor:'#000',//文本颜色
+        fontSize:40,//字体大小
+        circleRadius:100//圆半径
+    });
+
+</script>
+</body>
+</html>

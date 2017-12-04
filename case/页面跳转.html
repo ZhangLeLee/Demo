@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>页面跳转</title>
+	<style>
+		.wrap{
+			width: 650px;
+			height: 40px;
+			border: 1px solid;
+			display: flex;
+			justify-content: space-around;
+		}
+		.wrap button{
+			height: 25px;
+			background: lightblue;
+		}
+	</style>
+</head>
+<body>
+	<div class="wrap">
+		<button class="but1">页面跳转</button>
+		<button class="but2">返回上次浏览器的界面</button>
+		<button class="but3">指定页面的跳转</button>
+		<button class="but4">自身页面的跳转(对框架无效)</button>
+		<button class="but5">自身页面的跳转(对框架有效)</button>
+	</div>
+	<iframe src="http://hao123.com" frameborder="0" width="500" height="500"></iframe> 
+</body>
+<script>
+	var but1 = document.querySelector(".but1");
+	var but2 = document.querySelector(".but2");
+	var but3 = document.querySelector(".but3");
+	var but4 = document.querySelector(".but4");
+	var but5 = document.querySelector(".but5");
+	but1.onclick = function(){
+		// 当前页面的地址
+		console.log(window.location.href);
+		window.location.href = 'http:www.baidu.com';
+		// 添加参数
+		// window.location.href = ' ' + window.location.href;
+	}
+	// 返回上次浏览器的界面
+	but2.onclick = function(){
+		window.history.back(-1);
+	}
+	// 指定页面的跳转(ie使用 对框架无效)
+	but3.onclick = function(){
+		window.navigate('http:www.baidu.com')
+	}
+	// 指定自身页面的跳转(对框架无效)
+	but4.onclick = function(){
+		window.location = 'http:www.baidu.com';
+	}
+	// 指定自身页面的跳转(对框架有效)
+	but5.onclick = function(){
+		top.location = "http:www.baidu.com";  //top:window
+		console.log(top);
+	}
+
+</script>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+

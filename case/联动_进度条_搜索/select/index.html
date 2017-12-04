@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<meta charset="utf8">
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Baidu Jsonp</title>
+</head>
+<style type="text/css">
+	#word{
+		position: absolute;
+		z-index: 99;
+		width: 145px;
+		height: auto;
+		background-color: white;
+		border: black solid 1px;
+		display: none;
+	}
+	.click_work{
+		padding-bottom: 8px;
+		font-weight:lighter;
+		font-size: 13px;
+		cursor:pointer;/*鼠标放上变成小手*/
+	}
+	.click_work:hover{
+		color: orange;
+		background-color: gray;
+	}
+	.error{
+		color: gray;
+		cursor:pointer;/*鼠标放上变成小手*/
+	}
+</style>
+<body>
+	<center>
+		<h1>百度</h1>
+	</center>
+	<table align="center">
+		<tr>
+			<td style="position: relative;">
+				<input id="text" type="text" placeholder="搜索">
+				<input type="button" value="Go">
+				<div id="word"></div>
+			</td>
+		</tr>
+	</table>
+</body>
+<!-- 引入DOM -->
+	<script type="text/javascript" src="Public/jquery.js"></script>
+	<script type="text/javascript" src="Public/JsonpAjax.js"></script>
+<!-- END DOM -->
+</html>

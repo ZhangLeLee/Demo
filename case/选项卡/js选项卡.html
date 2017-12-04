@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>js选项卡</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		nav{
+			background: #1c1c1c;
+			margin: 0 auto;
+			text-align: center;
+		}
+		nav a{
+			line-height: 50px;
+			color: white;
+			margin-left: 30px;
+		}
+		.wrap{
+			width: 60%;
+			margin: 0 auto;
+		}
+		.menu{
+			border: 1px solid #ccc;
+			background: #ccc;
+			line-height: 40px;
+		}
+		.menu li{
+			display: inline-block;
+			color: white;
+			list-style: none;
+		}
+		.menu li:hover{
+			cursor: pointer;
+		}
+		.content{
+			border: 1px solid #ccc;
+		}
+		.content div{
+			height: 300px;
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<nav>
+		<a href="js选项卡.html">js选项卡</a>
+		<a href="插件引入选项卡.html">插件引入选项卡</a>
+		<a href="jQ选项卡.html">jQ选项卡</a>
+	</nav>
+	<div class="wrap">
+		<ul class="menu">
+			<li class="menu-one">菜单一</li>
+			<li class="menu-two">菜单二</li>
+			<li class="menu-three">菜单三</li>
+		</ul>
+		<div class="content">
+			<div id="c1" class="content-one">内容一</div>
+			<div id="c2" class="content-one">内容二</div>
+			<div id="c3" class="content-one">内容三</div>
+		</div>
+	</div>
+</body>
+<script>
+	var menus = document.querySelectorAll("li");
+	var contents = document.querySelectorAll(".content-one");
+
+	for(var i = 0; i < menus.length; i++){
+		menus[0].style.background = "#0099dd";
+		contents[0].style.display = "block";
+		menus[i].onclick = function(){
+			for(var j = 0; j < menus.length; j++){
+				if(this == menus[j]){
+					menus[j].style.background = "#0099dd";
+					contents[j].style.display = "block";
+				} else {
+					menus[j].style.background = "";
+					contents[j].style.display = "none";
+				}
+			}
+		}
+	}
+</script>
+</html>
+
+
+
+
+
+
+
+
+
+

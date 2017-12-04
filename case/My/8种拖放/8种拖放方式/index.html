@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>8种拖放方式</title>
+	<link rel="stylesheet" href="css/jquery.dad.css">
+	<style>
+		.demo,.box,.rub{
+			width: 1100px;
+			height: 200px;
+			border: 1px solid #ddd;
+		}
+		.item{
+			display: inline-block;
+			width: 180px;
+			height: 100px;
+		}
+		.item1{background: red;}
+		.item2{background: yellow;}
+		.item3{background: orange;}
+		.item4{background: lightgreen;}
+		.item5{background: cyan;}
+		.item6{background: pink;}
+		.item7{background: blue;}
+		.item8{background: purple;}
+		.item9{background: yellowgreen;}
+		.item10{background: greenyellow;}
+		.rub>span{
+			padding: 10px 10px;
+			background: pink;
+		}
+	</style>
+</head>
+<body>
+	<!-- 水平拖放 垂直拖放 多行拖放-->
+	<!-- <div class="demo">
+		<div class="item item1"><span>1</span></div>
+		<div class="item item2"><span>2</span></div>
+		<div class="item item3"><span>3</span></div>
+		<div class="item item4"><span>4</span></div>
+		<div class="item item5"><span>5</span></div>
+		<div class="item item6"><span>6</span></div>
+		<div class="item item7"><span>7</span></div>
+		<div class="item item8"><span>8</span></div>
+		<div class="item item9"><span>9</span></div>
+		<div class="item item10"><span>10</span></div>
+	</div> -->
+
+	<!-- 特定区域拖放 -->
+	<div class="box">
+		<div class="item item1">
+			<h3>标题1</h3>
+			<span>1</span>
+		</div>
+		<div class="item item2">
+			<h3>标题2</h3>
+			<span>2</span>
+		</div>
+		<div class="item item3">
+			<h3>标题3</h3>
+			<span>3</span>
+		</div>
+		<div class="item item4">
+			<h3>标题4</h3>
+			<span>4</span>
+		</div>
+		<div class="item item5">
+			<h3>标题5</h3>
+			<span>5</span>
+		</div>
+	</div>
+	<div class="rub">
+		
+	</div>
+	<button class="ok">ok</button>
+	<button class="no">no</button>
+</body>
+<script src="js/jquery-1.11.3.min.js"></script>
+<script src="js/jquery.dad.min.js"></script>
+<script>
+	// $(".demo").dad();
+
+	// $(".box").dad({
+	// 	draggable:'h3'
+	// });
+
+	// 允许/禁止拖放
+	// var n = $(".box").dad();
+	// $(".ok").click(function(){
+	// 	n.activate();
+	// })
+	// $(".no").click(function(){
+	// 	n.deactivate();
+	// })
+
+	// 回调函数
+	$(".box").dad({
+		callback:function(){
+			console.log(1234);
+		}
+	});
+
+	// 伪垃圾篓
+	var p = $(".box").dad();
+	var rub = $(".rub");
+	p.addDropzone(rub,function(e){
+		e.find('span').appendTo(rub);
+		e.remove();
+	});
+</script>
+</html>
+
+
+
+
+

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>开关</title>
+	<style>
+		*{
+			margin: 0;padding: 0;
+			list-style: none;
+		}
+		#wrap{
+			width: 200px;
+			margin: 20px auto;
+			text-align: center;
+		}
+		ul{
+			display: none;
+		}
+		ul li{
+			border: 1px solid ;
+			height: 40px;
+			line-height: 40px;
+		}
+		#title{
+			border: 1px solid;
+			height: 70px;
+			line-height: 70px;
+		}
+		.active{
+			background: yellow;
+		}
+	</style>
+</head>
+<body>
+	<div id="wrap">
+		<div id="title">隐藏</div>
+			<ul>
+				<li>1</li>
+				<li>2</li>
+				<li>3</li>
+				<li>4</li>
+			</ul>
+		
+	</div>
+</body>
+<script>
+	var wrap = document.getElementById('wrap');
+	var title = document.getElementById('title');
+	var ul = document.getElementsByTagName("ul")[0];
+	var aLi = document.getElementsByTagName('li');
+	var flag = true;
+
+	title.onclick = function(){
+		if(flag == true){
+			ul.style.display = 'block';
+			title.innerHTML = "展开";
+			click();
+			flag = false;
+		}else{
+			ul.style.display = 'none';
+			title.innerHTML = "隐藏";
+			flag = true;
+		}
+	}
+
+	function click(){
+		for(var i = 0; i < aLi.length; i++){
+			aLi[i].flag = 0;
+			aLi[i].onclick = function(){
+				if(this.flag == 0){
+					this.className = 'active';
+					this.flag = 1;
+				}else{
+					this.className = '';
+					this.flag = 0;
+				}
+			}
+		}
+	}
+</script>
+</html>
+
+
+
+
+
+
+
+
+
+
+

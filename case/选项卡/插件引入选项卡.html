@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>选项卡(插件引入)</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		nav{
+			background: #1c1c1c;
+			margin: 0 auto;
+			text-align: center;
+		}
+		nav a{
+			line-height: 50px;
+			color: white;
+			margin-left: 30px;
+		}
+		.wrap{
+			width: 60%;
+			margin: 0 auto;
+		}
+		.menu{
+			border: 1px solid #ccc;
+			background: #ccc;
+			line-height: 40px;
+		}
+		.menu li{
+			display: inline-block;
+			color: white;
+			list-style: none;
+		}
+		.menu li:hover{
+			cursor: pointer;
+		}
+		.wrap div{
+			border: 1px solid #ccc;
+			height: 300px;
+		}
+	</style>
+</head>
+<body>
+	<nav>
+		<a href="js选项卡.html">js选项卡</a>
+		<a href="插件引入选项卡.html">插件引入选项卡</a>
+		<a href="jQ选项卡.html">jQ选项卡</a>
+	</nav>
+	<div class="wrap" id="wrap">
+		<ul class="menu">
+			<li rel="t1" class="selectActive menu-one">菜单一</li>
+			<li rel="t2">菜单二</li>
+			<li rel="t3">菜单三</li>
+		</ul>
+		<div rel="t1">内容一</div>
+		<div rel="t2">内容二</div>
+		<div rel="t3">内容三</div>
+	</div>
+</body>
+<script src="js/jquery.js"></script>
+<script src="js/tabs.js"></script>
+<script>
+	tabs_takes.init("wrap");
+	$(".menu-one").css({background:"#0099dd"});
+	$("li").click(function(){	
+		$("li").css({background:""});
+		$(this).css({background:"#0099dd"});
+	});
+</script>
+</html>
+
+
+
+
+
+
+
+

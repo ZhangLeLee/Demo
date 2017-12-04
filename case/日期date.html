@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>date分享</title>
+</head>
+<body>
+	
+</body>
+<script>
+	var now = new Date();  //获取当前时间
+	console.log(now);
+
+	var d1 = new Date("2017 September 9"); //设定的时间
+	console.log(d1);
+
+	var d2 = new Date(2017,8,10,11,30);  //月份是从0开始算的,此处现实的月份是9月
+	console.log(d2);
+
+	var d3 = new Date(1500000000000);
+	console.log(d3);
+
+	var leftTime = d2.getTime() - now.getTime();  //毫秒数,时间戳
+	console.log(leftTime);
+	var day = Math.floor(leftTime/(1000*60*60*24));
+	console.log(day);
+	var hour = Math.floor((leftTime - day*1000*60*60*24)/(1000*60*60));
+	console.log(hour);
+</script>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+

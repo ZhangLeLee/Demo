@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>growl</title>
+	<link rel="stylesheet" href="jquery.growl.css">
+	<style>
+		
+	</style>
+</head>
+<body>
+	<ul>
+		<li><a href="" class="error">错误</a></li>
+		<li><a href="" class="notice">提醒</a></li>
+		<li><a href="" class="warning">警告</a></li>
+	</ul>
+</body>
+<script src="http://libs.baidu.com/jquery/1.11.3/jquery.min.js"></script>
+<script src="jquery.growl.js"></script>
+<script>
+	$(function(){
+		$.growl({
+			title:"消息标题",
+			message:"消息内容"
+		})
+		$(".error").click(function(event){
+			event.preventDefault() //取消默认事件
+			event.stopPropagation() //停止事件传播 阻止冒泡,阻止它被传播到其他节点
+			$.growl.error({
+				title:"错误标题",
+				message:"错误内容"
+			})
+		})
+		$(".notice").click(function(event){
+			event.preventDefault() //取消默认事件
+			event.stopPropagation() //停止事件传播 阻止冒泡,阻止它被传播到其他节点
+			$.growl.notice({
+				title:"提醒标题",
+				message:"提醒内容"
+			})
+		})
+		$(".warning").click(function(event){
+			event.preventDefault() //取消默认事件
+			event.stopPropagation() //停止事件传播 阻止冒泡,阻止它被传播到其他节点
+			$.growl.warning({
+				title:"警告标题",
+				message:"警告内容"
+			})
+		})
+	})
+</script>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

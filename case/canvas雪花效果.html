@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>canvas雪花效果</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#canvas{
+			background: skyblue;
+		}
+	</style>
+</head>
+<body>
+	<canvas id="canvas" width="1000" height="600"></canvas>
+</body>
+<script>
+	var canvas = document.getElementById('canvas');
+	var ctx = canvas.getContext("2d");
+	var arr = [];
+	for (var i = 0; i < 500; i++) {   //雪花个数: 1000
+		arr.push({
+			x: Math.random() * canvas.width,
+			y: Math.random() * canvas.height,
+			vx: Math.random() - 0.5,
+			vy: Math.random() + 0.5,
+			size: Math.random() * 3 + 1,
+			color: "#fff"
+		});
+	}
+	setInterval(function(){
+
+		ctx.clearRect(0,0,canvas.width,canvas.height)
+		for (var i = 0; i < arr.length; i++) {
+			var myarr = arr[i];
+			myarr.x += arr[i].vx;
+			myarr.y += arr[i].vy;
+			if(myarr.x > canvas.width){
+				myarr.x = 0;
+			}
+			if(myarr.x < 0){
+				myarr.x = canvas.width;
+			}
+			if(myarr.y > canvas.height){
+				myarr.y = 0;
+			}
+			ctx.beginPath();
+			ctx.arc(myarr.x,myarr.y,myarr.size,0,Math.PI*2);
+			ctx.fillStyle = myarr.color;
+			ctx.fill();
+			ctx.closePath();
+		}
+	},30);
+</script>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+

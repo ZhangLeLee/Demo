@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input type="text" list="mydata" placeholder="热门电影">
+	<datalist id="mydata">
+		<option value="@qq.com"></option>
+		<option value="@163.com"></option>
+	</datalist>
+</body>
+<script src="datalist-mail.js"></script>
+<script src="jquery.min.js"></script>
+<script>
+	var put = document.querySelector("input");
+	var arr = ["aa.com","bb.com"];
+	fnDatalistMail(put,{
+		email:arr
+	});
+	// var option = document.querySelectorAll("option");
+	// var oVal = [];
+	// for (var i = 0; i < option.length; i++) {
+	// 	oVal.push(option[i].value);
+	// }
+	// var inputVal = [];
+	// put.oninput = function(ev){
+	// 	var e = ev || window.event;
+	// 	inputVal.push(e.data);
+	// 	var str = inputVal.join("");
+	// 	for (var j = 0; j < option.length; j++) {
+	// 		option[j].style.display = "block";
+	// 		option[j].value = str + oVal[j];
+	// 	}
+	// }
+</script>
+</html>
+
+
+
+
+
+
+
+

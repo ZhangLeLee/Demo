@@ -1,0 +1,56 @@
+<!-- ECharts -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#wrap{
+			width: 500px;
+			height: 500px;
+			margin:0 auto;
+		}
+	</style>
+</head>
+<body>
+	<div id="wrap">
+		
+	</div>
+</body>
+<script src="echarts.min.js"></script>
+<script>
+	var wrap = echarts.init(document.getElementById('wrap'));
+	var option = {
+		title:{
+			text:"逃课名单"
+		},
+		xAxis:{
+			data:["A班","B班","C班"]
+		},
+		yAxis:{
+			
+		},
+		legend:{
+			data:['销量']
+		},
+		series:[{
+			type:"bar",   //pie : 饼状图 bar: 柱状图
+			data:[12,20,5]
+		}],
+		tooltip:{
+
+		}
+	}
+	wrap.setOption(option);
+</script>
+</html>
+
+
+
+
+
+
+
+
+

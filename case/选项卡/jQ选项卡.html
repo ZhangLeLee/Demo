@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>jQ选项卡</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		nav{
+			background: #1c1c1c;
+			margin: 0 auto;
+			text-align: center;
+		}
+		nav a{
+			line-height: 50px;
+			color: white;
+			margin-left: 30px;
+		}
+		.wrap{
+			width: 60%;
+			margin: 0 auto;
+		}
+		.menu{
+			border: 1px solid #ccc;
+			background: #ccc;
+			line-height: 40px;
+		}
+		.menu li{
+			display: inline-block;
+			color: white;
+			list-style: none;
+		}
+		.menu li:hover{
+			cursor: pointer;
+		}
+		.content{
+			border: 1px solid #ccc;
+		}
+		.content div{
+			height: 300px;
+		}
+		.hide{
+			display: none;
+		}
+		.current{
+			background: #0099dd;
+		}
+	</style>
+</head>
+<body>
+	<nav>
+		<a href="js选项卡.html">js选项卡</a>
+		<a href="插件引入选项卡.html">插件引入选项卡</a>
+		<a href="jQ选项卡.html">jQ选项卡</a>
+	</nav>
+	<div class="wrap">
+		<ul class="menu">
+			<li xxx="c1" class="current" onclick="Tab(this);">菜单一</li>
+			<li xxx="c2" onclick="Tab(this);">菜单二</li>
+			<li xxx="c3" onclick="Tab(this);">菜单三</li>
+		</ul>
+		<div class="content">
+			<div id="c1">内容一</div>
+			<div id="c2" class="hide">内容二</div>
+			<div id="c3" class="hide">内容三</div>
+		</div>
+	</div>
+</body>
+<script src="js/jquery.js"></script>
+<script>
+	function Tab(self){
+		$(self).addClass("current").siblings().removeClass("current");
+		var x = "#" + $(self).attr("xxx");
+		$(x).removeClass("hide").siblings().addClass("hide");
+	}
+</script>
+</html>
+
+
+
+
+
+
+
+
+
+

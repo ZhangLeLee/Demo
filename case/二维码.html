@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>二维码</title>
+	<style>
+		.qr{
+			width: 300px;
+			height: 300px;
+			margin: 0 auto;
+		}	
+	</style>
+</head>
+<body>
+	<div class="qr"></div>
+	<input type="text" class="input" value="http://baidu.com">
+	<input type="button" class="btn">
+	<span class="span"></span>
+	<div class="time"></div>	
+</body>
+<script type="text/javascript" src="http://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+<script type="text/javascript" src="http://static.runoob.com/assets/qrcode/qrcode.min.js"></script>
+<script>
+	var qrcode = new QRCode(
+		$(".qr")[0],
+		{
+			width:300,
+			height:300
+		}
+	);
+	window.onkeydown = function(ev){
+		var e = ev || window.event;
+		if(e.keyCode == 13){
+			qrc();
+		}
+	}
+	// 创建时间
+	setInterval(function(){
+		var mydate = new Date();
+		$(".time").html(mydate.toLocaleString());
+	},1000);
+	$(".btn").on("click",function(){
+		qrc();
+	})
+	function qrc(){
+		if(!$(".input")[0].value){
+			$(".span").html("请输入正确的值");
+			return;
+		}
+		qrcode.makeCode($(".input")[0].value);
+	}
+
+</script>
+</html>
+
+
+
+
+
+
+
+
+

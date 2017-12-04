@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+			}
+
+			#minDiv {
+				width: 350px;
+				height: 350px;
+				background-image: url(img/min.png);
+				background-size: 100% 100%;
+				border: 1px solid black;
+				float: left;
+				position: relative;
+			}
+			#mengDiv{
+				position: absolute;
+				width: 150px;
+				height: 150px;
+				background-color: lightgray;
+				opacity: 0.6;
+				display: none;
+			}
+			#maxDiv{
+				width: 400px;
+				height: 400px;
+				float: left;
+				position: relative;
+				overflow: hidden;
+				border: 1px solid black;
+				display: none;
+			}
+			#maxImg{
+				position: absolute;
+			}
+		</style>
+	</head>
+
+	<body>
+		<!--左边小图部分-->
+		<div id="minDiv">
+			<!--蒙版div-->
+			<div id="mengDiv"></div>
+		</div>
+
+		<!--右边大图部分可视区域-->
+		<div id="maxDiv">
+			<!--右边的大图片-->
+			<img id="maxImg" src="img/max.png" alt="" />
+		</div>
+		<script>
+			// 获取标签
+			var minDiv = document.getElementById("minDiv");
+			var mengDiv = document.getElementById("mengDiv");
+			var maxImg = document.getElementById("maxImg");
+			var maxDiv = document.getElementById("maxDiv");
+
+			// 给左边小图区域绑定鼠标移入事件
+			minDiv.onmouseover = function(){
+				// 蒙版显示, 右边大图显示区域 显示
+				mengDiv.style.display = "block";
+				maxDiv.style.display = "block";
+				// 给左边小图区域绑定鼠标移动事件
+				minDiv.onmousemove = function(ev){
+					var evObj = ev || window.event;
+					// 获取蒙版左上角的x, y坐标点
+					var x = evObj.clientX - mengDiv.offsetWidth / 2;
+					var y = evObj.clientY - mengDiv.offsetHeight / 2;
+					// 下面判断是不要让蒙版出到左边小图区域的外部
+
+					// 左边界判断
+					if (x < 0){
+						x = 0;
+					}
+
+					// 右边界判断
+					if (x > minDiv.offsetWidth - mengDiv.offsetWidth){
+						x = minDiv.offsetWidth - mengDiv.offsetWidth;
+					}
+
+					// 上边界判断
+					if (y < 0){
+						y = 0;
+					}
+
+					// 下边界判断
+					if (y > minDiv.offsetHeight - mengDiv.offsetHeight){
+						y = minDiv.offsetHeight - mengDiv.offsetHeight;
+					}
+
+					// 设置蒙版的left和top值
+					mengDiv.style.left = x + "px";
+					mengDiv.style.top = y + "px";
+
+					// 计算蒙版所在左边小图区域, x和y轴在的位置的百分比(然后我们同样比例调整右面大图在右面div可视区域的位置)
+					// x轴百分比
+					var percentX = x / (minDiv.offsetWidth - mengDiv.offsetWidth);
+					// y轴百分比
+					var percentY = y / (minDiv.offsetHeight - mengDiv.offsetHeight);
+
+					// 右面大图应该移动的left和top值, 注意要是负数, 因为是往原点的左边和上边移动
+					maxImg.style.left = (maxImg.offsetWidth - maxDiv.offsetWidth) * -percentX + "px";
+					maxImg.style.top = (maxImg.offsetHeight - maxDiv.offsetHeight) * -percentY + "px";
+				}
+			}
+			// 给左边小图区域div绑定鼠标移出事件
+			minDiv.onmouseout = function(){
+				// 隐藏蒙版 和右边大图显示区域
+				mengDiv.style.display = "none";
+				maxDiv.style.display = "none";
+			}
+		</script>
+	</body>
+</html>

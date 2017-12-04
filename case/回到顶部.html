@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		body{
+			height: 2000px;
+		}
+		p{
+			position: absolute;
+			bottom: 0;
+		}
+		#back{
+			position: fixed;
+			width: 100px;
+			height: 30px;
+			background: red;
+			bottom: 0;
+			right: 0;
+			/*display: none;*/
+		}
+	</style>
+</head>
+<body>
+	<p>asdf</p>
+	<div id="back">回到顶部</div>
+</body>
+<script>
+	var back = document.querySelector("#back");
+	window.onscroll = function () {
+		//var current = function () {
+			var current = document.body.scrollTop || document.documentElement.scrollTop || window.pageYOffset;
+			if(current > 0){
+				back.style.display = 'block';
+			}else{
+				back.style.display = 'none';
+			}
+		//}
+	}
+	back.onclick = function(){
+		if(document.body.scrollTop){
+			document.body.scrollTop = 0;
+		} else if(document.documentElement.scrollTop){
+			document.documentElement.scrollTop = 0;
+		} else {
+			window.pageYOffset = 0;
+		}
+	}
+</script>
+</html>
+
+
+
+
+
+
+
+
+
+
+

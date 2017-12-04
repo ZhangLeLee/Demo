@@ -1,0 +1,111 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<title> jRate - 五星评价</title>
+</head>
+<style>
+div {
+	width: 200px;
+	height: 50px;
+}
+
+button {
+	margin: 300px 100px;
+}
+</style>
+<body>
+	<h2>jRate Demo Page</h2>
+	<div id="jRate"></div>
+	<button id="btn">Reset Me</button>
+	
+</body>
+
+<script src="jquery.min.js"></script>
+<script src="jRate.js"></script>
+<script type="text/javascript">
+			
+	// jRate():画出五角星
+	var tool = $("#jRate").jRate({
+		 
+		// 从可用的选项图型列表中选择评分图案
+		shape: 'STAR',
+		
+		/*
+			STAR:星星
+			RECTANGLE:矩形 
+			CIRCLE:圆形 
+			RHOMBUS:菱形
+			TRIANGLE:三角形
+			FOOD:食物
+			TWITTER:小鸟
+			BULB:灯泡
+			BASKET:手推车
+		*/
+
+        
+        // 设置星星的默认个数
+        // rating: 5,
+
+		// 自定义星星数量
+  		count:5,
+
+  		// 设置重置所需的最大值和最小值
+		// min: 2,
+  // 		max: 4,
+		
+		// 设置需要的精度值
+		precision: 0.5,	
+		
+		// 最少选择
+		minSelected: 1,
+
+		// 自定义评分星星的宽度和高度
+		// width: 200,
+		// height: 200,
+
+		// 设置评分星星的开始颜色和结束颜色
+		startColor: "red",
+		endColor: "red",
+  		
+  		// 设置背景颜色
+  		// backgroundColor: 'red'
+		
+		// 设置评分图案的描边颜色
+		strokeColor: 'hotpink',	
+		
+		// 设置评分图案的透明度
+		// opacity:0.6,
+
+		// 可以设置两个图形之间的间隙
+		// shapeGap: '10px'
+		
+		// 使用growth字段可以使评分图形由小到大变化
+		// widthGrowth: -0.2,
+  // 		heightGrowth: -0.2,
+
+		// 方向	
+		// horizontal:false,
+		// reverse: false //水平方向
+
+		// 将评分设置为只读模式
+		// readOnly: true
+		
+		// 当评分值改变时的一个回调函数			
+		// onChange: function(rating) {
+		// 	console.log("OnChange: Rating: "+rating);
+		// },			
+		
+		// 当评分星星被点击或设置是的回调函数
+		// onSet: function(rating) {
+		// 	console.log("OnSet: Rating: "+rating);	
+		// 	alert("Thanks!");			
+		// }
+	});			
+	
+	$('#btn').on('click', function() {
+		tool.setRating(5);				
+	})
+			
+		
+	</script>
+	</html>

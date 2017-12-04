@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>城市地区联动</title>
+</head>
+<body>
+	<div id="city_1">
+		<select class="prov"></select>
+		<select class="city"></select>
+	</div>
+	<div id="city_2">
+		<select class="prov"></select>
+		<select class="city"></select>
+		<select class="dist"></select>
+	</div>
+	<div id="city_3">
+		<select class="prov"></select>
+		<select class="city"></select>
+	</div>
+	<div id="city_4">
+		<select class="prov"></select>
+		<select class="city"></select>
+		<select class="dist"></select>
+	</div>
+	<div id="city_5">
+		<select class="prov"></select>
+		<select class="city"></select>
+		<select class="dist"></select>
+	</div>
+		
+	
+
+</body>
+<script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+<script type="text/javascript" src="js/jquery.cityselect.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$("#city_1").citySelect();
+		$("#city_2").citySelect({
+			nodata:"none"
+		});
+		$("#city_3").citySelect({
+			prov:"山西",
+			city:"临汾"
+		});
+		$("#city_4").citySelect({
+			prov:"山西",
+			city:"临汾",
+			dist:"浮山县"
+		});
+		$("#city_5").citySelect({
+			data:{"citylist":[
+				{"p":"前端技术","c":[{"n":"HTML"},{"n":"css","a":[{"s":"css2.0"},{"s":"css3.0"}]},{"n":"javaScript"}]},
+				{"p":"后台","c":[{"n":"HTML"},{"n":"css"},{"n":"javaScript"}]},
+				{"p":"数据库","c":[{"n":"HTML"},{"n":"css"},{"n":"javaScript"}]}
+			]},
+			prov:"",
+			city:"",
+			dist:"",
+			nodata:"none"
+
+		})
+	})
+</script>
+</html>

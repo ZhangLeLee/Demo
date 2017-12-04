@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>我的分享</title>
+	<style>
+		#wrap{
+			width: 800px;
+			height: 500px;
+			border: 1px solid #ccc;
+			position: relative;
+			margin: 0 auto;
+		}
+		#first{
+			width: 100px;
+			height: 100px;
+			background: green;
+			position: absolute;
+			top: 50px;
+			left: 50px;
+		}
+	</style>
+</head>
+<body>
+	<div id="wrap">
+		<div id="first"></div>
+	</div>
+</body>
+</html>
+<script>
+	var wrap = document.querySelector('#wrap');
+	var first = document.querySelector('#first');
+
+	// 刷新页面时，让方块随机出现
+	function rand(min,max) {
+		return parseInt(Math.random() * (max - min) + min);
+	}
+	first.style.left = rand(0,wrap.offsetWidth - first.offsetWidth) + "px";
+	first.style.top = rand(0,wrap.offsetHeight - first.offsetHeight) + "px";
+
+	move();
+	function move () {
+		var left = first.offsetLeft;
+		var mytop = first.offsetTop;
+		var judgeLeft = true;
+		var judgeTop = true;
+		var timer = setInterval(function() {
+			if(judgeLeft){
+				left++;
+			} else {
+				left--;
+			}
+			if(judgeTop){
+				mytop++;
+			} else {
+				mytop--;
+			}
+			if(left >= wrap.offsetWidth - first.offsetWidth){
+				judgeLeft = false;
+			} else if(left <= 0){
+				judgeLeft = true;
+			}
+			if(mytop <= 0){
+				judgeTop = true;
+			} else if(mytop >= wrap.offsetHeight - first.offsetHeight) {
+				judgeTop = false;
+			}
+			first.style.left = left + "px";
+			first.style.top = mytop + "px";
+		},5);
+	}
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

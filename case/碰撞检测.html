@@ -1,0 +1,228 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>分享(事件对象里面的属性)</title>
+	<style>
+		*{margin: 0;padding: 0;}
+		img{
+			width: 750px;
+			position: absolute;
+			right: 0;
+		}
+		#wrap{
+			border: 10px solid yellow;
+			width: 100px;
+			height: 100px;
+			background: purple;
+			position: absolute;
+			left: 10px;
+			top: 10px;
+		}
+		#box{
+			width: 300px;
+			height: 250px;
+			border: 1px solid green;
+			position: relative;
+		}
+	</style>
+</head>
+<body>
+	<div id="box">
+		<div id="wrap"></div>		
+	</div>
+	<img src="img/wu.png" alt="">
+	
+</body>
+<script>
+	var wrap = document.getElementById("wrap");
+	wrap.onclick = function(ev){
+		var e = ev || window.event;
+		console.log(e.clientX);
+		console.log(e.offsetX);
+	}
+	console.log(wrap.clientWidth);
+	console.log(wrap.offsetWidth); //加边框的高
+	console.log(wrap.clientLeft);  //左边框的宽度
+	console.log(wrap.clientTop);   //上边框的宽度
+	console.log(wrap.offsetLeft);
+	console.log(wrap.offsetTop);
+</script>
+</html>
+ -->
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#wrap{
+			width: 100px;
+			height: 100px;
+			background: red;
+		}
+	</style>
+</head>
+<body>
+	<div id="wrap"></div>
+</body>
+<script>
+	// var wrap = document.getElementById('wrap');
+	// wrap.onclick = function(){
+	// 	// console.log(this);
+	// 	test();
+	// };
+	// wrap.onclick = test;
+	// function test(){
+	// 	console.log(this);
+	// }
+	
+</script>
+</html>
+ -->
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{margin: 0;padding: 0;list-style: none;}
+		ul{
+			overflow: hidden;
+			margin: 100px auto;
+			width: 275px;
+		}
+		li{
+			width: 50px;
+			height: 50px;
+			border-radius: 50%;
+			background: orange;
+			margin-left: 5px;
+			float: left;
+			text-align: center;
+			color: white;
+			line-height: 50px;
+		}
+	</style>
+</head>
+<body>
+	<ul>
+		<li>1</li>
+		<li>2</li>
+		<li>3</li>
+		<li>4</li>
+		<li>5</li>
+	</ul>
+</body>
+<script>
+	var lis = document.getElementsByTagName('li');
+	for (var i = 0; i < lis.length; i++) {
+		lis[i].onclick = function(){
+			for (var j = 0; j < lis.length; j++) {
+				lis[j].style.background = 'orange';
+			}
+			this.style.background = 'purple';
+		}
+	}
+</script>
+</html>
+ -->
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>碰撞检测</title>
+	<style>
+		*{margin: 0;padding: 0;}
+		#a{
+			width: 100px;
+			height: 100px;
+			background: orange;
+			position:absolute;
+			left: 0;
+			top:0;
+		}
+		#b{
+			width: 100px;
+			height: 100px;
+			background: purple;
+			position: absolute;
+			top: 200px;
+			left: 200px;
+		}
+	</style>
+</head>
+<body>
+	<div id="a"></div>
+	<div id="b"></div>
+</body>
+<script>
+	var a = document.getElementById('a');
+	var b = document.getElementById('b');
+	move(a);
+	move(b);
+
+	function ifFn(a,b,fn){
+		var leftmin = a.offsetLeft - b.offsetWidth;
+		var leftmax = a.offsetLeft + b.offsetWidth;
+		var topmin = a.offsetTop - b.offsetHeight;
+		var topmax = a.offsetTop + b.offsetHeight;
+		var v = false;
+		if(b.offsetLeft >= leftmin && b.offsetLeft <= leftmax && b.offsetTop >= topmin && b.offsetTop <= topmax){
+			v = true;			
+		}
+		if(fn){
+			fn(v);
+		}
+	}
+
+	function move(obj){
+		obj.onmousedown = function(ev){
+			var e = ev || window.event;
+			var offY = obj.offsetTop;
+			var offX = obj.offsetLeft;
+			var beginX = e.clientX;
+			var beginY = e.clientY;
+			document.onmousemove = function(ev){
+				var e = ev || window.event;
+				var endX = e.clientX;
+				var endY = e.clientY;
+				obj.style.left = endX - beginX + offX + 'px';
+				obj.style.top = endY - beginY + offY + 'px';
+				
+				ifFn(a,b,function(v){
+					if(v){
+						console.log('碰撞');
+					}
+				});
+			}
+			document.onmouseup = function(){
+				document.onmousemove = null;
+			}
+		}
+	}
+	
+</script>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

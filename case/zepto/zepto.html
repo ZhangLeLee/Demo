@@ -1,0 +1,49 @@
+<!-- zepto 多用于手机端的开发 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>zepto</title>
+</head>
+<body>
+	
+</body>
+<!-- <script src="http://libs.baidu.com/jquery/1.11.3/jquery.min.js"></script> -->
+<script src="zepto.js"></script>
+<script>
+	var a = $("<div>fjdsaifhr</div>",{id:"box"}); //创建标签
+	a.appendTo(document.body); // 将标签插入到body中
+	a.attr({id:"box"});
+	a.css({
+		width:"100px",
+		height:"100px",
+		background:"yellowgreen",
+		border:"1px solid"
+	})
+	console.log(a.offset()); //zepto不仅返回left和top值,也返回样式 
+	console.log(a.width()); //border边框的宽度 padding margin也返回
+
+	console.log($.camelCase("hello-there")); //将字符串变成驼峰命名
+
+	console.log($.contains($("body")[0],$("body")[0])); 
+	// 同一结点或者兄弟节点返回false
+	// 父子节点返回true
+</script>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

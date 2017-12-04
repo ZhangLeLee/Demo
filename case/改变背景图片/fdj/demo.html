@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title></title>
+<link rel="stylesheet" type="text/css" href="css/jquery-picZoomer.css">
+<style type="text/css">
+    .piclist li{
+        display: inline-block;
+        width: 50px;
+        height: 50px;
+    }
+    .piclist li img{
+        width: 100%;
+        height: auto;
+    }
+    
+</style>
+</head>
+<body>
+    <div class="picZoomer">
+        <img src="img/0.jpg" height="320" width="320" alt="">
+    </div>
+    <ul class="piclist">
+        <li><img src="img/0.jpg" alt=""></li>
+        <li><img src="img/1.jpg" alt=""></li>
+        <li><img src="img/2.jpg" alt=""></li>
+        <li><img src="img/3.jpg" alt=""></li>
+        <li><img src="img/4.jpg" alt=""></li>
+        <li><img src="img/5.jpg" alt=""></li>
+        <li><img src="img/6.jpg" alt=""></li>
+        <li><img src="img/7.jpg" alt=""></li>
+        <li><img src="img/8.jpg" alt=""></li>
+    </ul>
+</body>
+<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="src/jquery.picZoomer.js"></script>
+<script type="text/javascript">
+        $(function() {
+            $('.picZoomer').picZoomer();
+            //切换图片
+            $('.piclist li').on('click',function(event){
+                var $pic = $(this).find('img');
+                $('.picZoomer-pic').attr('src',$pic.attr('src'));
+            });
+        });
+</script>
+</html>
